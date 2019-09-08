@@ -1,0 +1,33 @@
+"""a simpleRisc assembly program to find ramaujan number, the smallest number that is sum of 2 cubes in two different ways"""
+
+ mov r1,0
+ mov r0,1
+ .loop1:
+     mov r3,0
+     mov r4,1
+     .loop2:
+         add r5,r4,1
+         .loop3:
+             mul r6,r4,r4
+             mul r6,r6,r4
+             mul r7,r5,r5
+             mul r7,r7,r5
+             add r8,r6,r7
+             cmp r8,r0
+             beq.collab
+             .continue1
+             cmp r0,r5
+             bgt.loop3
+         cmp r0,r4
+         bgt.loop2
+     cmp r3,2
+     beq.fin
+     .continue2
+     cmp 1,r1
+     bgt.loop1
+ .collab:
+ add r3,r3,1
+ b.continue1
+ .fin:
+ add r1,r1,1
+ b.continue2
